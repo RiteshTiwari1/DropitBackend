@@ -1,7 +1,9 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 function connectDB() {
-  mongoose.connect(process.env.MONGO_CONNECTION_URL);
+  mongoose.connect(process.env.MONGO_CONNECTION_URL,{
+    bufferTimeoutMS: 30000,
+  });
   const connection = mongoose.connection;
   connection
     .once("open", () => {
